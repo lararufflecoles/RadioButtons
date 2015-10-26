@@ -1,9 +1,7 @@
 package es.rufflecol.lara.radiobuttons;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
@@ -38,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View v) {
-        RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
-        // Declares a toast when Submit is pressed
-        Toast.makeText(MainActivity.this, "You selected " + rb.getText(), Toast.LENGTH_SHORT).show();
+//        RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
+//        // Declares a toast when Submit is pressed
+//        Toast.makeText(MainActivity.this, "You selected " + rb.getText(), Toast.LENGTH_SHORT).show();
 
-        showDialog();
+        if (radioButtons != null) {
+            showDialog();
+        } else
+        Toast.makeText(MainActivity.this, "You must select an option", Toast.LENGTH_SHORT).show();
     }
 
     private void showDialog() {
@@ -50,19 +51,24 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialogBuilder.setTitle(null);
 
-        // set dialog message
+        RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
+        // set dialog message (nb that positive, negative and neutral buttons don't mean anything per se, they are just a way to distinguish between the three and they have a specific ordering
         alertDialogBuilder
-                .setMessage(MainActivity.this, "You selected" + rb.getText)
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setMessage("You selected " + rb.getText())
+                .setCancelable(true) // True allows you to use the back button to exit the dialog, false does not
+                .setPositiveButton("Show Image", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        // Adding an intent to the onClick method enables you to connect a button to a new activity
+                        Intent intent = new Intent(MainActivity.this, DisplayImageActivity.class);
+                        startActivity(intent);
                         // if this button is clicked, close current activity
-                        MainActivity.this.finish();
+                        // MainActivity.this.finish();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Back", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // if this button is clicked, just close the dialog box and do nothing
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
                         dialog.cancel();
                     }
                 });
@@ -72,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
+
+
+    // Want to re-factor, discuss with Sam
     // Code for the options in the Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

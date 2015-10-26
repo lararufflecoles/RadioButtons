@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Radio Buttons</string>
+    <string name="favourite_baby_animal">What is your favourite baby animal?</string>
+    <string name="activity_display_image">Display Image</string>
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
     <string name="action_search">Search</string>
-    <string name="dialog_fire_missiles">Fire missiles</string>
-
 
 </resources>
