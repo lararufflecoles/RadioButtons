@@ -1,5 +1,7 @@
 package es.rufflecol.lara.radiobuttons;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -7,8 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
+import android.widget.Toast;
 
 public class DisplayImageActivity extends AppCompatActivity {
 
@@ -19,7 +20,44 @@ public class DisplayImageActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("animalBundle");
+        String animal = bundle.getString("animal");
+
+        ImageView animalView = (ImageView) findViewById(R.id.imageView);
+        findViewById(R.id.imageView);
+        switch (animal) {
+            case "Cub":
+                animalView.setImageResource(R.drawable.cub);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+            case "Duckling":
+                animalView.setImageResource(R.drawable.duckling);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+            case "Fawn":
+                animalView.setImageResource(R.drawable.fawn);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+            case "Kitten":
+                animalView.setImageResource(R.drawable.kitten);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+            case "Lamb":
+                animalView.setImageResource(R.drawable.lamb);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+            case "Puppy":
+                animalView.setImageResource(R.drawable.puppy);
+                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                break;
+        }
     }
+//        Toast.makeText(this, animal, Toast.LENGTH_SHORT).show();
+
+
+
 
 
 
@@ -34,6 +72,16 @@ public class DisplayImageActivity extends AppCompatActivity {
 //                        //.resize(600, 480)
 //                .into(imageView);
 //    }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -27,46 +27,6 @@
         android:padding="8dp">
 
         <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Kitten"
-            android:padding="5dp"
-            android:buttonTint="@color/button_tint"/>
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Puppy"
-            android:padding="5dp"
-            android:buttonTint="@color/button_tint"/>
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Fawn"
-            android:padding="5dp"
-            android:buttonTint="@color/button_tint"/>
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Lamb"
-            android:padding="5dp"
-            android:buttonTint="@color/button_tint"/>
-
-        <RadioButton
-            android:id="@+id/radioButton6"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Chick"
-            android:padding="5dp"
-            android:buttonTint="@color/button_tint"/>
-
-        <RadioButton
             android:id="@+id/radioButton7"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -79,6 +39,38 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Duckling"
+            android:padding="5dp"
+            android:buttonTint="@color/button_tint"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Fawn"
+            android:padding="5dp"
+            android:buttonTint="@color/button_tint"/>
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Kitten"
+            android:padding="5dp"
+            android:buttonTint="@color/button_tint"/>
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Lamb"
+            android:padding="5dp"
+            android:buttonTint="@color/button_tint"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Puppy"
             android:padding="5dp"
             android:buttonTint="@color/button_tint"/>
     </RadioGroup>

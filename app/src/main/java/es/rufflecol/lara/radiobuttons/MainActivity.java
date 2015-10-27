@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -40,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
 //        // Declares a toast when Submit is pressed
 //        Toast.makeText(MainActivity.this, "You selected " + rb.getText(), Toast.LENGTH_SHORT).show();
 
-        if (radioButtons != null) {
-            showDialog();
-        } else
-        Toast.makeText(MainActivity.this, "You must select an option", Toast.LENGTH_SHORT).show();
+        showDialog();
     }
 
     private void showDialog() {
@@ -51,30 +49,42 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialogBuilder.setTitle(null);
 
-        RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
-        // set dialog message (nb that positive, negative and neutral buttons don't mean anything per se, they are just a way to distinguish between the three and they have a specific ordering
-        alertDialogBuilder
-                .setMessage("You selected " + rb.getText())
-                .setCancelable(true) // True allows you to use the back button to exit the dialog, false does not
-                .setPositiveButton("Show Image", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Adding an intent to the onClick method enables you to connect a button to a new activity
-                        Intent intent = new Intent(MainActivity.this, DisplayImageActivity.class);
-                        startActivity(intent);
-                        // if this button is clicked, close current activity
-                        // MainActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("Back", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // if this button is clicked, just close
-                        // the dialog box and do nothing
-                        dialog.cancel();
-                    }
-                });
+        final RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        // set dialog message (nb that positive, negative and neutral buttons don't mean anything per se, they are just a way to distinguish between the three allowed, plus they have a specific ordering
+
+        if (rb != null) {
+
+            alertDialogBuilder
+                    .setMessage("You selected " + rb.getText())
+                    .setCancelable(true) // True allows you to use the back button to exit the dialog, false does not
+                    .setPositiveButton("Show Image", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Adding an intent to the onClick method enables you to connect a button to a new activity
+
+                            Intent intent = new Intent(MainActivity.this, DisplayImageActivity.class);
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("animal", rb.getText().toString());
+                            intent.putExtra("animalBundle", bundle);
+
+                            startActivity(intent);
+                            // if this button is clicked, close current activity
+                            // MainActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // if this button is clicked, just close
+                            // the dialog box and do nothing
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+        } else
+            Toast.makeText(this, "Please select select an option", Toast.LENGTH_SHORT).show();
     }
 
 
