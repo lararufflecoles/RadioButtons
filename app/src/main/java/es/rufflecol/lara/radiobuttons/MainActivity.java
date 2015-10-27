@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSubmit(View v) {
 //        RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
-//        // Declares a toast when Submit is pressed
 //        Toast.makeText(MainActivity.this, "You selected " + rb.getText(), Toast.LENGTH_SHORT).show();
 
         showDialog();
@@ -46,12 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
         alertDialogBuilder.setTitle(null);
 
         final RadioButton rb = (RadioButton) radioButtons.findViewById(radioButtons.getCheckedRadioButtonId());
 
-        // set dialog message (nb that positive, negative and neutral buttons don't mean anything per se, they are just a way to distinguish between the three allowed, plus they have a specific ordering
+        // NB that the positive/negative/neutral buttons don't mean anything per se, they are just a way to distinguish between the 3 allowed, and they have a specific ordering
 
         if (rb != null) {
 
@@ -75,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     })
                     .setNegativeButton("Back", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
+                            // If this button is clicked, just close the dialog box and do nothing
                             dialog.cancel();
                         }
                     });
