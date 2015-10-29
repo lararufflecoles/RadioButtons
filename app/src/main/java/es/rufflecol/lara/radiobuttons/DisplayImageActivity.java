@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 
 public class DisplayImageActivity extends AppCompatActivity {
 
+    private ImageView animalView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,57 +27,45 @@ public class DisplayImageActivity extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("animalBundle");
         String animal = bundle.getString("animal");
 
-        ImageView animalView = (ImageView) findViewById(R.id.imageView);
+        animalView = (ImageView)findViewById(R.id.imageView);
         switch (animal) {
             case "Cub":
                 animalView.setImageResource(R.drawable.cub);
-                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                animalView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 break;
             case "Duckling":
                 animalView.setImageResource(R.drawable.duckling);
-                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                animalView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 break;
             case "Fawn":
                 animalView.setImageResource(R.drawable.fawn);
-                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                animalView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 break;
             case "Kitten":
                 animalView.setImageResource(R.drawable.kitten);
-                animalView.setScaleType(ImageView.ScaleType.FIT_XY);
+                animalView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 break;
             case "Lamb":
-//              animalView.setImageResource(R.drawable.lamb);
-//              animalView.setScaleType(ImageView.ScaleType.FIT_XY);
-                Picasso.with(this)
-                        .load("http://lara.rufflecol.es/wp-content/uploads/lamb.jpg")
-                        .fit().centerCrop()
-                        .into(animalView);
+                loadImage("http://lara.rufflecol.es/wp-content/uploads/lamb.jpg");
                 break;
             case "Puppy":
-                //animalView.setImageResource(R.drawable.puppy);
-                //animalView.setScaleType(ImageView.ScaleType.FIT_XY);
-                Picasso.with(this)
-                        .load("http://lara.rufflecol.es/wp-content/uploads/puppy.jpg")
-                        .fit().centerCrop()
-                        .into(animalView);
+                loadImage("http://lara.rufflecol.es/wp-content/uploads/puppy.jpg");
                 break;
         }
     }
 //        Toast.makeText(this, animal, Toast.LENGTH_SHORT).show();
 
-
-
-
-
-
-
-
+    private void loadImage(String url) {
+        Picasso.with(this)
+                .load(url)
+                .fit().centerCrop()
+                .into(animalView);
+    }
 
     // Want to re-factor, discuss with Sam
-    // Code for the options in the Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();         // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();   // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.activity_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
