@@ -1,5 +1,5 @@
 # RadioButtons
 
-Implementing a set of RadioButtons and sending a result to another activity using Intent
+App passes a choice through to another activity and displays content based on that choice
 
 https://youtu.be/fwDRa71ZAh4
